@@ -52,6 +52,12 @@
             "text": "Education"
         }
     ],
+    "statsConfig": [
+        { "value": "17+", "label": "years in tech", "icon": "bi-stopwatch" },
+        { "value": "10",  "label": "certifications & accreditations", "icon": "bi-patch-check-fill" },
+        { "value": "5",   "label": "enterprise tech vendors", "icon": "bi-buildings-fill" },
+        { "value": "3",   "label": "regions covered", "icon": "bi-globe-europe-africa" }
+    ],
     "skillsConfig": [
         {
             "group": "Databricks Platform",

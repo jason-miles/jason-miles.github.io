@@ -25,19 +25,21 @@ function loadNavBarMobile(itemList) {
     itemList.forEach(item => {
          const listItem = document.createElement('li');
          listItem.classList.add('nav-item');
-     
+
          const link = document.createElement('a');
-         link.href = item.itemhref;
-         link.target = "_new";
+         // Config uses `href` (not `itemhref`); for internal anchors stay in-page.
+         link.href = item.href || item.itemhref || '#';
+         var isExternal = /^https?:/i.test(link.href);
+         if (isExternal) link.target = "_blank";
          link.classList.add('nav-link');
-     
+
          const icon = document.createElement('i');
          icon.classList.add('fs-5', item.icon);
-     
+
          const textSpan = document.createElement('span');
          textSpan.classList.add('ms-1', 'd-none', 'd-sm-inline');
-         textSpan.textContent = item.itemText;
-     
+         textSpan.textContent = item.text || item.itemText || '';
+
          link.appendChild(icon);
          link.appendChild(textSpan);
          listItem.appendChild(link);
@@ -117,6 +119,41 @@ function loadSkills(skillsList) {
         });
         groupWrap.appendChild(items);
         skillsContainer.appendChild(groupWrap);
+    });
+}
+
+// Load "By the numbers" stats strip
+function loadStats(statList) {
+    var container = document.getElementById("dynamicStats");
+    if (!container || !statList || !statList.length) return;
+    statList.forEach(function (s) {
+        var card = document.createElement("div");
+        card.className = "stat-card";
+
+        if (s.icon) {
+            var iconWrap = document.createElement("div");
+            iconWrap.className = "stat-icon";
+            var icon = document.createElement("i");
+            icon.className = "bi " + s.icon;
+            iconWrap.appendChild(icon);
+            card.appendChild(iconWrap);
+        }
+
+        var meta = document.createElement("div");
+        meta.className = "stat-meta";
+
+        var value = document.createElement("div");
+        value.className = "stat-value";
+        value.textContent = s.value;
+        meta.appendChild(value);
+
+        var label = document.createElement("div");
+        label.className = "stat-label";
+        label.textContent = s.label;
+        meta.appendChild(label);
+
+        card.appendChild(meta);
+        container.appendChild(card);
     });
 }
 
@@ -212,41 +249,51 @@ function loadBadges(badgeObjects) {
   });
 }
 
-// Load Experience
+// Load Experience — vertical timeline layout
 function loadExperience(experienceList) {
-    var experienceContainer = document.getElementById("dynamicexperience");
-    experienceList.forEach(item => {
-        var resumeBox = document.createElement("div");
-        resumeBox.className = "resume-box row";
+    var container = document.getElementById("dynamicexperience");
+    if (!container || !experienceList) return;
 
-        var col1 = document.createElement("div");
-        col1.className = "col-3 col-sm-3 col-md-2";
+    var timeline = document.createElement("div");
+    timeline.className = "timeline";
 
-        var img = document.createElement("img");
-        img.className = "company-pic";
-        img.src = item.imageSrc;
-        img.alt = item.company || "";
-        col1.appendChild(img);
+    experienceList.forEach(function (item) {
+        var entry = document.createElement("div");
+        entry.className = "timeline-item";
 
-        var col2 = document.createElement("div");
-        col2.className = "col-9 col-sm-9 col-md-10 row";
-
-        // Company name header (with total duration / region subtitle if provided)
-        var heading = document.createElement("h4");
-        heading.textContent = item.company;
-        col2.appendChild(heading);
-
-        if (item.totalDuration || item.companyMeta) {
-            var meta = document.createElement("div");
-            meta.className = "col-12";
-            meta.style.opacity = "0.7";
-            meta.style.fontSize = "0.9em";
-            meta.style.marginBottom = "8px";
-            meta.textContent = [item.totalDuration, item.companyMeta].filter(Boolean).join(" · ");
-            col2.appendChild(meta);
+        // Company logo node on the accent line
+        var node = document.createElement("div");
+        node.className = "timeline-node";
+        if (item.imageSrc) {
+            var nodeImg = document.createElement("img");
+            nodeImg.src = item.imageSrc;
+            nodeImg.alt = item.company || "";
+            node.appendChild(nodeImg);
         }
+        entry.appendChild(node);
 
-        // Normalize roles: support new schema (item.roles[]) AND legacy fields
+        var card = document.createElement("div");
+        card.className = "timeline-card";
+
+        // Company header row: name + total duration / region meta
+        var header = document.createElement("div");
+        header.className = "timeline-company";
+
+        var name = document.createElement("div");
+        name.className = "timeline-company-name";
+        name.textContent = item.company || "";
+        header.appendChild(name);
+
+        var metaParts = [item.totalDuration, item.companyMeta].filter(Boolean);
+        if (metaParts.length) {
+            var meta = document.createElement("div");
+            meta.className = "timeline-company-meta";
+            meta.textContent = metaParts.join(" · ");
+            header.appendChild(meta);
+        }
+        card.appendChild(header);
+
+        // Normalize roles: new schema (item.roles[]) AND legacy fields
         var roles = item.roles;
         if (!roles) {
             roles = [{
@@ -260,39 +307,117 @@ function loadExperience(experienceList) {
             }
         }
 
-        roles.forEach(function (role, idx) {
-            var jobTitle = document.createElement("h5");
-            jobTitle.textContent = role.jobTitle;
-            if (idx > 0) jobTitle.style.paddingTop = "10px";
-            col2.appendChild(jobTitle);
+        var rolesWrap = document.createElement("div");
+        rolesWrap.className = "timeline-roles";
+        roles.forEach(function (role) {
+            var rWrap = document.createElement("div");
+            rWrap.className = "timeline-role";
 
-            var dateDiv = document.createElement("div");
-            dateDiv.className = "col-7";
-            dateDiv.style.opacity = "0.85";
-            dateDiv.textContent = role.date || "";
-            col2.appendChild(dateDiv);
+            var title = document.createElement("h5");
+            title.className = "timeline-role-title";
+            title.textContent = role.jobTitle || "";
+            rWrap.appendChild(title);
 
-            var locDiv = document.createElement("div");
-            locDiv.className = "col-5";
-            locDiv.style.textAlign = "right";
-            locDiv.style.opacity = "0.85";
-            locDiv.textContent = role.location || "";
-            col2.appendChild(locDiv);
+            var rMetaParts = [role.date, role.location].filter(Boolean);
+            if (rMetaParts.length) {
+                var rMeta = document.createElement("div");
+                rMeta.className = "timeline-role-meta";
+                rMetaParts.forEach(function (txt, i) {
+                    if (i > 0) {
+                        var dot = document.createElement("span");
+                        dot.className = "dot";
+                        dot.textContent = "·";
+                        rMeta.appendChild(dot);
+                    }
+                    var span = document.createElement("span");
+                    span.textContent = txt;
+                    rMeta.appendChild(span);
+                });
+                rWrap.appendChild(rMeta);
+            }
 
             if (role.description) {
                 var desc = document.createElement("div");
-                desc.className = "col-12";
-                desc.style.marginTop = "6px";
-                desc.style.fontSize = "0.95em";
+                desc.className = "timeline-role-desc";
                 desc.textContent = role.description;
-                col2.appendChild(desc);
+                rWrap.appendChild(desc);
+            }
+
+            rolesWrap.appendChild(rWrap);
+        });
+        card.appendChild(rolesWrap);
+
+        entry.appendChild(card);
+        timeline.appendChild(entry);
+    });
+
+    container.appendChild(timeline);
+}
+
+// Scroll-reveal: mark target nodes with .reveal then add .in-view as they enter the viewport.
+function initScrollReveal() {
+    var selectors = [
+        '#stats .stat-card',
+        '#about .content-box',
+        '#skills .skill-group, #skills .skill-label',
+        '#certifications .badgeCard',
+        '#projects .project-card',
+        '#github .content-box',
+        '#experience .timeline-item',
+        '#education .resume-box',
+        '#connect .content-box'
+    ];
+    var nodes = document.querySelectorAll(selectors.join(','));
+    if (!nodes.length) return;
+
+    nodes.forEach(function (el) { el.classList.add('reveal'); });
+
+    if (!('IntersectionObserver' in window)) {
+        nodes.forEach(function (el) { el.classList.add('in-view'); });
+        return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
             }
         });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
 
-        resumeBox.appendChild(col1);
-        resumeBox.appendChild(col2);
-        experienceContainer.appendChild(resumeBox);
+    nodes.forEach(function (el) { observer.observe(el); });
+}
+
+// Scroll-spy: highlight the mobile bottom-nav item for whichever section is most visible.
+function initScrollSpy() {
+    var links = Array.from(document.querySelectorAll('#mobileNavBar a[href^="#"]'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+
+    var byId = {};
+    links.forEach(function (link) {
+        var id = link.getAttribute('href').replace('#', '');
+        if (id) byId[id] = link;
     });
+
+    var sections = Object.keys(byId)
+        .map(function (id) { return document.getElementById(id); })
+        .filter(Boolean);
+
+    if (!sections.length) return;
+
+    var setActive = function (id) {
+        links.forEach(function (l) { l.classList.toggle('active', l === byId[id]); });
+    };
+
+    var observer = new IntersectionObserver(function (entries) {
+        var visible = entries
+            .filter(function (e) { return e.isIntersecting; })
+            .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; });
+        if (visible.length) setActive(visible[0].target.id);
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: [0.1, 0.25, 0.5, 0.75] });
+
+    sections.forEach(function (s) { observer.observe(s); });
 }
 
 // Fetch the JSON data
@@ -304,14 +429,18 @@ fetch(configURL)
     return response.json(); // Parse the response as JSON
   })
   .then(data => {
-      // Destructure lists from the JSON object
-      //const { list1, list2, list3 } = data;
       loadNavBarMobile(data.navbarMobileConfig);
       loadNavBarWeb(data.navbarWebConfig);
+      loadStats(data.statsConfig);
       loadSkills(data.skillsConfig);
       loadBadges(data.badgeConfig);
       loadProjects(data.projectsConfig);
       loadExperience(data.experienceConfig);
+      // Initialise observers after dynamic content is in the DOM.
+      requestAnimationFrame(function () {
+          initScrollReveal();
+          initScrollSpy();
+      });
   })
   .catch(error => {
     console.error('Error fetching data:', error);

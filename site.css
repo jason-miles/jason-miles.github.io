@@ -511,3 +511,210 @@ body {
     .section-title h2 { font-size: 22px !important; }
     .project-card-name { font-size: 15px; }
 }
+
+/* =========================================================================
+   Modernization layer v2 (added 2026-06-30)
+   - "By the numbers" stats strip
+   - Vertical timeline for Work Experience
+   - Scroll-reveal + scroll-spy nav
+   ========================================================================= */
+
+/* ------- Stats strip ------- */
+#stats { margin-top: 36px; }
+.stats-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    background: var(--color-gray-7);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    box-shadow: var(--cardElev);
+    transition: border-color 200ms ease, transform 200ms ease;
+}
+.stat-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+.stat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--accentSoft);
+    color: var(--accent);
+    font-size: 18px;
+    flex-shrink: 0;
+}
+.stat-meta { line-height: 1.2; }
+.stat-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.2px;
+}
+.stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--textMuted);
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+/* ------- Vertical timeline (Work Experience) ------- */
+#dynamicexperience.content-box {
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+.timeline {
+    position: relative;
+    padding-left: 0;
+    margin-top: 8px;
+}
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 18px;
+    width: 2px;
+    background: linear-gradient(to bottom,
+        rgba(255, 54, 33, 0.4) 0%,
+        rgba(255, 255, 255, 0.08) 80%,
+        rgba(255, 255, 255, 0) 100%);
+}
+.timeline-item {
+    position: relative;
+    padding-left: 56px;
+    padding-bottom: 28px;
+}
+.timeline-item:last-child { padding-bottom: 6px; }
+.timeline-node {
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-gray-7);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0 0 4px var(--color-gray-8);
+}
+.timeline-node img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 2px;
+}
+.timeline-card {
+    background: var(--color-gray-7);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: var(--cardElev);
+    transition: border-color 200ms ease, transform 200ms ease;
+}
+.timeline-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+.timeline-company {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    margin-bottom: 4px;
+}
+.timeline-company-name {
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffffff;
+    letter-spacing: 0.1px;
+}
+.timeline-company-meta {
+    font-size: 12px;
+    color: var(--textMuted);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+.timeline-roles {
+    margin-top: 10px;
+    padding-left: 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+.timeline-role + .timeline-role { margin-top: 14px; }
+.timeline-role-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.35;
+}
+.timeline-role-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    margin-top: 3px;
+    font-size: 12.5px;
+    color: var(--textMuted);
+}
+.timeline-role-meta .dot { opacity: 0.4; }
+.timeline-role-desc {
+    margin-top: 6px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+}
+@media (max-width: 576px) {
+    .timeline-item { padding-left: 48px; }
+    .timeline::before { left: 14px; }
+    .timeline-node { left: 2px; width: 26px; height: 26px; }
+    .timeline-company-name { font-size: 16px; }
+}
+
+/* ------- Scroll reveal ------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+.reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ------- Scroll-spy active state on mobile bottom nav ------- */
+#mobileNavBar .nav-link.active {
+    color: var(--accent) !important;
+    background-color: var(--accentSoft) !important;
+    border-radius: 8px;
+}
+
+/* Smooth in-page anchor scrolling + give sections breathing room below fixed navbar */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+}
+section[id] {
+    scroll-margin-top: 5rem;
+}
