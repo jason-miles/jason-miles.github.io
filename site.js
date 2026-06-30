@@ -364,7 +364,7 @@ function initScrollReveal() {
         '#projects .project-card',
         '#github .content-box',
         '#experience .timeline-item',
-        '#education .resume-box',
+        '#education .timeline-item',
         '#connect .content-box'
     ];
     var nodes = document.querySelectorAll(selectors.join(','));

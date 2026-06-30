@@ -687,6 +687,11 @@ body {
     .timeline-company-name { font-size: 16px; }
 }
 
+/* Education uses the same node/card pattern as Work Experience but is a single
+   entry — hide the connector line so it doesn't dangle into empty space. */
+.education-timeline::before { display: none; }
+.education-timeline .timeline-item { padding-bottom: 0; }
+
 /* ------- Scroll reveal ------- */
 .reveal {
     opacity: 0;
