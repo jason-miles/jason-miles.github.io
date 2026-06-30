@@ -122,6 +122,57 @@ function loadSkills(skillsList) {
     });
 }
 
+// Load "Now" / current-focus callout
+function loadNow(cfg) {
+    var container = document.getElementById("dynamicNow");
+    if (!container || !cfg || cfg.show === false) {
+        if (container) container.style.display = "none";
+        return;
+    }
+
+    var card = document.createElement("div");
+    card.className = "now-card";
+
+    var head = document.createElement("div");
+    head.className = "now-head";
+
+    var label = document.createElement("span");
+    label.className = "now-label";
+    var dot = document.createElement("span");
+    dot.className = "now-dot";
+    label.appendChild(dot);
+    label.appendChild(document.createTextNode(cfg.label || "Now"));
+    head.appendChild(label);
+
+    if (cfg.updated) {
+        var upd = document.createElement("span");
+        upd.className = "now-updated";
+        upd.textContent = cfg.updated;
+        head.appendChild(upd);
+    }
+    card.appendChild(head);
+
+    if (cfg.headline) {
+        var h = document.createElement("p");
+        h.className = "now-headline";
+        h.textContent = cfg.headline;
+        card.appendChild(h);
+    }
+
+    if (cfg.items && cfg.items.length) {
+        var list = document.createElement("ul");
+        list.className = "now-list";
+        cfg.items.forEach(function (txt) {
+            var li = document.createElement("li");
+            li.textContent = txt;
+            list.appendChild(li);
+        });
+        card.appendChild(list);
+    }
+
+    container.appendChild(card);
+}
+
 // Load "By the numbers" stats strip
 function loadStats(statList) {
     var container = document.getElementById("dynamicStats");
@@ -226,6 +277,8 @@ function loadBadges(badgeObjects) {
         badgeImage.classList.add("badge-img");
         badgeImage.src = item.imageUrl;
         badgeImage.alt = item.altText;
+        badgeImage.loading = "lazy";
+        badgeImage.decoding = "async";
         badgeImage.onerror = createFallbackImageHandler(item.fallbackImageUrl);
 
         var cardBody = document.createElement("div");
@@ -267,7 +320,9 @@ function loadExperience(experienceList) {
         if (item.imageSrc) {
             var nodeImg = document.createElement("img");
             nodeImg.src = item.imageSrc;
-            nodeImg.alt = item.company || "";
+            nodeImg.alt = (item.company ? item.company + " logo" : "");
+            nodeImg.loading = "lazy";
+            nodeImg.decoding = "async";
             node.appendChild(nodeImg);
         }
         entry.appendChild(node);
@@ -357,6 +412,7 @@ function loadExperience(experienceList) {
 // Scroll-reveal: mark target nodes with .reveal then add .in-view as they enter the viewport.
 function initScrollReveal() {
     var selectors = [
+        '#now .now-card',
         '#stats .stat-card',
         '#about .content-box',
         '#skills .skill-group, #skills .skill-label',
@@ -431,6 +487,7 @@ fetch(configURL)
   .then(data => {
       loadNavBarMobile(data.navbarMobileConfig);
       loadNavBarWeb(data.navbarWebConfig);
+      loadNow(data.nowConfig);
       loadStats(data.statsConfig);
       loadSkills(data.skillsConfig);
       loadBadges(data.badgeConfig);

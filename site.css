@@ -692,6 +692,91 @@ body {
 .education-timeline::before { display: none; }
 .education-timeline .timeline-item { padding-bottom: 0; }
 
+/* ------- "Now" / current-focus callout ------- */
+#now { margin-top: 36px; }
+.now-card {
+    background:
+        linear-gradient(135deg, rgba(255, 54, 33, 0.08) 0%, rgba(255, 54, 33, 0) 60%),
+        var(--color-gray-7);
+    border: 1px solid rgba(255, 54, 33, 0.25);
+    border-left: 3px solid var(--accent);
+    border-radius: 14px;
+    padding: 16px 20px 18px;
+    box-shadow: var(--cardElev);
+}
+.now-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.now-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+.now-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(255, 54, 33, 0.6);
+    animation: nowPulse 2.4s ease-out infinite;
+}
+@keyframes nowPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 54, 33, 0.55); }
+    70%  { box-shadow: 0 0 0 10px rgba(255, 54, 33, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 54, 33, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .now-dot { animation: none; }
+}
+.now-updated {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--textMuted);
+    letter-spacing: 0.4px;
+}
+.now-headline {
+    font-size: 15px;
+    line-height: 1.55;
+    color: #ffffff;
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+.now-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.now-list li {
+    position: relative;
+    padding-left: 18px;
+    margin: 4px 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.82);
+}
+.now-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.7;
+}
+
 /* ------- Scroll reveal ------- */
 .reveal {
     opacity: 0;
@@ -722,4 +807,42 @@ html { scroll-behavior: smooth; }
 }
 section[id] {
     scroll-margin-top: 5rem;
+}
+
+/* Skip-to-content link — invisible until focused via keyboard tab. */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 12px;
+    z-index: 1080;
+    background: var(--accent);
+    color: #ffffff !important;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    transition: top 150ms ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+    top: 12px;
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* Don't render a focus ring on <main> when it's programmatically focused by the
+   skip link — the browser highlights the target without it being needed. */
+main:focus { outline: none; }
+
+/* Visible focus indicator on all interactive elements for keyboard users. */
+a:focus-visible,
+button:focus-visible,
+.action-btn:focus-visible,
+.connect-btn:focus-visible,
+.project-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 8px;
 }

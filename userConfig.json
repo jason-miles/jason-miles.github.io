@@ -52,6 +52,18 @@
             "text": "Education"
         }
     ],
+    "nowConfig": {
+        "_comment": "Edit this object whenever your focus shifts. The card auto-renders. Set 'show': false to hide.",
+        "show": true,
+        "label": "Now",
+        "updated": "Updated June 2026",
+        "headline": "Helping enterprise customers in EMEA take Databricks GenAI and Agent workloads from POC to production.",
+        "items": [
+            "Senior SA on the Databricks Strategics team \u2014 customers across the UK, Netherlands, and South Africa",
+            "Facilitating the next round of the Vibe Coding workshop series",
+            "Working on a reference pattern for Operationalizing AI on SAP + Databricks"
+        ]
+    },
     "statsConfig": [
         { "value": "17+", "label": "years in tech", "icon": "bi-stopwatch" },
         { "value": "10",  "label": "certifications & accreditations", "icon": "bi-patch-check-fill" },

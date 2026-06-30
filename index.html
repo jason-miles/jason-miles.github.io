@@ -3,11 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0d1117">
+    <meta name="color-scheme" content="dark">
 
-    <meta name="description" content="Jason Miles — Solutions Architect at Databricks. Helping enterprise customers design and deliver lakehouse, data engineering, ML, and Generative AI solutions on the Databricks Data Intelligence Platform." />
+    <meta name="description" content="Jason Miles — Senior Solutions Architect at Databricks. Helping enterprise customers design and deliver Lakehouse, data engineering, ML, and Generative AI solutions on the Databricks Data Intelligence Platform." />
     <meta name="keywords" content="Databricks, Solutions Architect, Lakehouse, Unity Catalog, Delta Lake, Lakeflow, DLT, Apache Spark, PySpark, Structured Streaming, MLflow, Generative AI, Agent Systems, RAG, Vector Search, Data Engineering, Data Warehousing, AWS, Azure, GCP, Customer Demos, POCs, Field Engineering, Python, SQL">
-    <title>Jason Miles - Databricks Solutions Architect</title>
+    <meta name="author" content="Jason Miles">
+    <title>Jason Miles · Senior Solutions Architect · Databricks</title>
 
+    <link rel="canonical" href="https://jason-miles.github.io/">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 
@@ -29,16 +33,50 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+    <link rel="preload" as="image" href="https://github.com/jason-miles.png" fetchpriority="high">
+    <link rel="preload" as="image" href="images/og-card.png">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="site.css">
     <link rel="stylesheet" href="responsive.min.css">
+
+    <!-- Schema.org Person markup for rich search results -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jason Miles",
+        "url": "https://jason-miles.github.io",
+        "image": "https://github.com/jason-miles.png",
+        "jobTitle": "Senior Solutions Architect",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Databricks",
+            "url": "https://www.databricks.com"
+        },
+        "description": "Senior Solutions Architect at Databricks. Helping enterprise customers design and deliver Lakehouse, data engineering, ML, and Generative AI solutions on the Databricks Data Intelligence Platform.",
+        "knowsAbout": ["Databricks", "Lakehouse", "Unity Catalog", "Delta Lake", "Lakeflow", "Apache Spark", "MLflow", "Generative AI", "Vector Search", "Data Engineering", "Data Warehousing"],
+        "sameAs": [
+            "https://www.linkedin.com/in/jasonmiles/",
+            "https://github.com/jason-miles",
+            "https://credentials.databricks.com/profile/jasonmiles-bcs/wallet"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "London",
+            "addressCountry": "GB"
+        }
+    }
+    </script>
 </head>
 
 <body class="text-white">
-    <nav id="myNavbar" class="navbar fixed-top" style="background-color:#0d1117">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <nav id="myNavbar" class="navbar fixed-top" style="background-color:#0d1117" aria-label="Mobile section nav">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
                 <img src="favicon-32x32.png" alt="Jason Miles" class="align-items-center">
@@ -52,10 +90,10 @@
     <!-- Left Column -->
     <div class="container-fluid overflow-hidden">
         <div class="row h-100">
-            <div class="left-col" style="">
+            <aside class="left-col" aria-label="About Jason Miles">
                 <div id="navbar-left" class="h-100 flex-column align-items-stretch pe-2 border-end">
                     <div class="user-pic-div">
-                        <img src="https://github.com/jason-miles.png" alt="Jason Miles" class="rounded-circle align-items-center user-pic">
+                        <img src="https://github.com/jason-miles.png" alt="Portrait of Jason Miles" class="rounded-circle align-items-center user-pic" width="160" height="160" fetchpriority="high">
                     </div>
                     <h4>Jason Miles</h4>
                     <div class="primary-color">DATABRICKS SOLUTIONS ARCHITECT | DATA &amp; AI</div>
@@ -72,15 +110,15 @@
                     </div>
 
                 </div>
-            </div>
+            </aside>
 
-            <div class="right-col ms-auto">
+            <main id="main-content" class="right-col ms-auto" tabindex="-1">
                 <div>
                     <!-- Mobile Only header -->
                     <div class="row mobileOnly">
                         <div class="col-4">
                             <div class="user-pic-div">
-                                <img src="https://github.com/jason-miles.png" alt="Jason Miles" class="rounded-circle align-items-center user-pic">
+                                <img src="https://github.com/jason-miles.png" alt="Portrait of Jason Miles" class="rounded-circle align-items-center user-pic" width="160" height="160">
                             </div>
                         </div>
                         <div class="col-7 offset-1" style="margin-top:10px">
@@ -105,6 +143,12 @@
                             <div class="primary-color">DATABRICKS SOLUTIONS ARCHITECT | DATA &amp; AI</div>
                         </div>
                     </div>
+
+                    <!-- "Now" / current-focus callout -->
+                    <section id="now" aria-label="What I'm focused on right now">
+                        <div id="dynamicNow"><!-- rendered by site.js --></div>
+                    </section>
+                    <!-- end Now callout -->
 
                     <!-- Stats strip / "by the numbers" -->
                     <section id="stats" aria-label="Career stats at a glance">
@@ -166,9 +210,9 @@
                         <div class="section-title">
                             <h2><i class="bi-bar-chart-line-fill"></i> GitHub Stats</h2>
                         </div>
-                        <div id="" class="content-box text-center">
-                            <img class="github-img" src="https://raw.githubusercontent.com/jason-miles/github-stats/generated/overview.svg#gh-dark-mode-only" alt="GitHub overview stats — auto-generated nightly">
-                            <img class="github-img" src="https://raw.githubusercontent.com/jason-miles/github-stats/generated/languages.svg#gh-dark-mode-only" alt="Top languages — auto-generated nightly">
+                        <div class="content-box text-center">
+                            <img class="github-img" src="https://raw.githubusercontent.com/jason-miles/github-stats/generated/overview.svg#gh-dark-mode-only" alt="GitHub overview stats — auto-generated nightly" loading="lazy" decoding="async">
+                            <img class="github-img" src="https://raw.githubusercontent.com/jason-miles/github-stats/generated/languages.svg#gh-dark-mode-only" alt="Top languages — auto-generated nightly" loading="lazy" decoding="async">
                         </div>
                     </section>
 
@@ -191,7 +235,7 @@
                         <div class="timeline education-timeline">
                             <div class="timeline-item">
                                 <div class="timeline-node">
-                                    <img src="images/Company/calvin.png" alt="Calvin University">
+                                    <img src="images/Company/calvin.png" alt="Calvin University logo" loading="lazy" decoding="async">
                                 </div>
                                 <div class="timeline-card">
                                     <div class="timeline-company">
@@ -235,12 +279,12 @@
                     <!-- end Let's Connect CTA -->
 
                 </div>
-            </div>
+            </main>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="right-col ms-auto site-footer">
+    <footer class="right-col ms-auto site-footer" role="contentinfo">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-sm-8 text-left">
