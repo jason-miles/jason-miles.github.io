@@ -259,6 +259,13 @@
             "webOnly": false
         },
         {
+            "imageUrl": "images/Badges/databricks-ai-agent-fundamentals.png",
+            "fallbackImageUrl": "images/Badges/Badge_Fallback.png",
+            "altText": "Academy Accreditation — AI Agent Fundamentals on Databricks",
+            "title": "AI Agent Fundamentals",
+            "webOnly": false
+        },
+        {
             "imageUrl": "images/Badges/databricks-genai-fundamentals.png",
             "fallbackImageUrl": "images/Badges/Badge_Fallback.png",
             "altText": "Academy Accreditation — Generative AI Fundamentals",
