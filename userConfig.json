@@ -80,7 +80,7 @@
         {
             "company": "Databricks",
             "totalDuration": "Full-time · 2 yrs",
-            "imageSrc": "images/Company/databricks.png",
+            "imageSrc": "images/Company/databricks.svg",
             "roles": [
                 {
                     "jobTitle": "Senior Solutions Architect — Strategics",
@@ -94,7 +94,7 @@
             "company": "Snowflake",
             "totalDuration": "Full-time · 4 yrs 1 mo",
             "companyMeta": "Greater London, England, United Kingdom",
-            "imageSrc": "images/Company/snowflake.png",
+            "imageSrc": "images/Company/snowflake.svg",
             "roles": [
                 {
                     "jobTitle": "Majors Senior Solutions Engineer",
@@ -131,7 +131,7 @@
             "company": "VMware",
             "totalDuration": "Full-time · 7 yrs",
             "companyMeta": "EMEA",
-            "imageSrc": "images/Company/vmware.png",
+            "imageSrc": "images/Company/vmware.svg",
             "roles": [
                 {
                     "jobTitle": "Global COE — Lead Architect (WWCC BU)",
