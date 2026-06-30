@@ -53,28 +53,78 @@
         }
     ],
     "skillsConfig": [
-        { "text": "Databricks Data Intelligence Platform" },
-        { "text": "Unity Catalog" },
-        { "text": "Delta Lake" },
-        { "text": "Lakeflow / Spark Declarative Pipelines" },
-        { "text": "Spark Structured Streaming" },
-        { "text": "Apache Spark / PySpark" },
-        { "text": "MLflow" },
-        { "text": "Model Serving" },
-        { "text": "Vector Search" },
-        { "text": "Generative AI Engineering" },
-        { "text": "Agent Systems / Agent Bricks" },
-        { "text": "Retrieval-Augmented Generation (RAG)" },
-        { "text": "Data Engineering" },
-        { "text": "Data Warehousing / DBSQL" },
-        { "text": "Lakehouse Architecture" },
-        { "text": "Python" },
-        { "text": "SQL" },
-        { "text": "AWS" },
-        { "text": "Azure" },
-        { "text": "GCP" },
-        { "text": "Customer Demos & POCs" },
-        { "text": "Solutions Architecture" }
+        {
+            "group": "Databricks Platform",
+            "items": [
+                { "text": "Databricks Data Intelligence Platform" },
+                { "text": "Unity Catalog" },
+                { "text": "Delta Lake" },
+                { "text": "Lakehouse Architecture" },
+                { "text": "DBSQL" }
+            ]
+        },
+        {
+            "group": "Data Engineering",
+            "items": [
+                { "text": "Lakeflow / Spark Declarative Pipelines" },
+                { "text": "Spark Structured Streaming" },
+                { "text": "Apache Spark / PySpark" },
+                { "text": "Data Warehousing" }
+            ]
+        },
+        {
+            "group": "AI & ML",
+            "items": [
+                { "text": "MLflow" },
+                { "text": "Model Serving" },
+                { "text": "Vector Search" },
+                { "text": "Generative AI Engineering" },
+                { "text": "Agent Systems / Agent Bricks" },
+                { "text": "Retrieval-Augmented Generation (RAG)" }
+            ]
+        },
+        {
+            "group": "Cloud & Languages",
+            "items": [
+                { "text": "AWS" },
+                { "text": "Azure" },
+                { "text": "GCP" },
+                { "text": "Python" },
+                { "text": "SQL" },
+                { "text": "Solutions Architecture" },
+                { "text": "Customer Demos & POCs" }
+            ]
+        }
+    ],
+    "projectsConfig": [
+        {
+            "name": "dbx-mlpro-cert",
+            "href": "https://github.com/jason-miles/dbx-mlpro-cert",
+            "icon": "bi-mortarboard-fill",
+            "tags": ["FastAPI", "React", "MLflow", "Practice Exam"],
+            "description": "Databricks Machine Learning Professional mock exam app: 171-question topic bank covering Advanced MLOps and ML at Scale, plus three full practice exams with AI-reasoned answer keys."
+        },
+        {
+            "name": "dbx-depro-cert",
+            "href": "https://github.com/jason-miles/dbx-depro-cert",
+            "icon": "bi-database-fill-gear",
+            "tags": ["FastAPI", "React", "Data Engineering", "Practice Exam"],
+            "description": "Databricks Data Engineer Professional mock exam app — same companion format as dbx-mlpro-cert, focused on Lakeflow, streaming, Delta, and Unity Catalog."
+        },
+        {
+            "name": "vibe-coding-workshop",
+            "href": "https://github.com/jason-miles/vibe-coding-workshop",
+            "icon": "bi-lightning-charge-fill",
+            "tags": ["Workshop", "AI Coding", "Cursor", "Claude"],
+            "description": "Materials, demos, and exercises from the November 2025 Vibe Coding workshop on building production AI assistants with the Databricks platform."
+        },
+        {
+            "name": "Operationalizing-AI-SAP-Databricks",
+            "href": "https://github.com/jason-miles/Operationalizing-AI-SAP-Databricks",
+            "icon": "bi-diagram-3-fill",
+            "tags": ["SAP", "Reference Pattern", "AI Workloads"],
+            "description": "End-to-end reference pattern for operationalizing AI workloads across SAP business data and the Databricks Data Intelligence Platform."
+        }
     ],
     "experienceConfig": [
         {

@@ -81,15 +81,96 @@ function loadNavBarWeb(itemList) {
         });
 }
 
-// Load Skills
+// Load Skills — supports both grouped ([{group, items:[...]}, ...]) and flat ([{text}, ...]) schemas
 function loadSkills(skillsList) {
     var skillsContainer = document.getElementById("dynamicSkills");
-    skillsList.forEach(item => {
-        var label = document.createElement("label");
-        label.textContent = item.text;
-        label.classList.add("skill-label");
-        skillsContainer.appendChild(label);
-  });
+    if (!skillsList || !skillsList.length) return;
+
+    var isGrouped = !!skillsList[0].group;
+
+    if (!isGrouped) {
+        skillsList.forEach(function (item) {
+            var label = document.createElement("label");
+            label.textContent = item.text;
+            label.classList.add("skill-label");
+            skillsContainer.appendChild(label);
+        });
+        return;
+    }
+
+    skillsList.forEach(function (group) {
+        var groupWrap = document.createElement("div");
+        groupWrap.className = "skill-group";
+
+        var groupTitle = document.createElement("div");
+        groupTitle.className = "skill-group-title";
+        groupTitle.textContent = group.group;
+        groupWrap.appendChild(groupTitle);
+
+        var items = document.createElement("div");
+        items.className = "skill-group-items";
+        (group.items || []).forEach(function (item) {
+            var label = document.createElement("label");
+            label.textContent = item.text;
+            label.classList.add("skill-label");
+            items.appendChild(label);
+        });
+        groupWrap.appendChild(items);
+        skillsContainer.appendChild(groupWrap);
+    });
+}
+
+// Load Featured Projects
+function loadProjects(projectList) {
+    var container = document.getElementById("dynamicProjects");
+    if (!container || !projectList) return;
+
+    projectList.forEach(function (p) {
+        var card = document.createElement("a");
+        card.className = "project-card";
+        card.href = p.href;
+        card.target = "_blank";
+        card.rel = "noopener";
+
+        var head = document.createElement("div");
+        head.className = "project-card-head";
+
+        var icon = document.createElement("i");
+        icon.className = "bi " + (p.icon || "bi-code-slash") + " project-card-icon";
+        head.appendChild(icon);
+
+        var name = document.createElement("div");
+        name.className = "project-card-name";
+        name.textContent = p.name;
+        head.appendChild(name);
+
+        var external = document.createElement("i");
+        external.className = "bi bi-box-arrow-up-right project-card-external";
+        head.appendChild(external);
+
+        card.appendChild(head);
+
+        if (p.description) {
+            var desc = document.createElement("div");
+            desc.className = "project-card-desc";
+            desc.textContent = p.description;
+            card.appendChild(desc);
+        }
+
+        if (p.tags && p.tags.length) {
+            var tags = document.createElement("div");
+            tags.className = "project-card-tags";
+            p.tags.forEach(function (t) {
+                var tag = document.createElement("span");
+                tag.className = "project-tag";
+                tag.textContent = t;
+                tags.appendChild(tag);
+            });
+            card.appendChild(tags);
+        }
+
+        container.appendChild(card);
+    });
 }
 
 // Load Badges
@@ -229,6 +310,7 @@ fetch(configURL)
       loadNavBarWeb(data.navbarWebConfig);
       loadSkills(data.skillsConfig);
       loadBadges(data.badgeConfig);
+      loadProjects(data.projectsConfig);
       loadExperience(data.experienceConfig);
   })
   .catch(error => {
@@ -239,27 +321,8 @@ fetch(configURL)
 //    target: '#navbar-example3'
 //})
 
-// Fetch visitor count from api
-function fetchStatus() {
-    fetch(statsURL)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            // JSON data has been successfully parsed
-            visitorCountJson = data;
-            // Create visitor label
-            var countTet = visitorCountJson.total.toLocaleString();
-            document.getElementById("visitorCount").innerHTML = countTet;
-            document.getElementById("visitorCount1").innerHTML = countTet;
-            //window.alert(countTet);
-        });
-}
-
-window.addEventListener('load', fetchStatus);
+// Visitor counter removed in modernization pass — kept stub for backward-compat with any external references.
+function fetchStatus() { /* no-op */ }
 //window.addEventListener('load', function () {
 //    // Your document is loaded.
 //    var fetchInterval = 50000; // 5 seconds.
