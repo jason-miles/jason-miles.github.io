@@ -1,0 +1,163 @@
+{
+    "_comment": "Site content for jason-miles.github.io — edit this file to update the page (no HTML changes needed).",
+    "navbarWebConfig": [
+        {
+            "href": "https://www.linkedin.com/in/jasonmiles/",
+            "icon": "bi-linkedin",
+            "text": "/jasonmiles",
+            "isLink": true
+        },
+        {
+            "href": "https://github.com/jason-miles",
+            "icon": "bi-github",
+            "text": "/jason-miles",
+            "isLink": true
+        },
+        {
+            "href": "https://credentials.databricks.com/profile/jasonmiles-bcs/wallet",
+            "icon": "bi-patch-check-fill",
+            "text": "Databricks credentials",
+            "isLink": true
+        },
+        {
+            "icon": "bi-pin-map",
+            "text": "Location — set in userConfig.json",
+            "isLink": false
+        }
+    ],
+    "navbarMobileConfig": [
+        {
+            "href": "#about",
+            "icon": "bi-person-circle",
+            "text": "About"
+        },
+        {
+            "href": "#skills",
+            "icon": "bi-person-fill-gear",
+            "text": "Skills"
+        },
+        {
+            "href": "#certifications",
+            "icon": "bi-trophy-fill",
+            "text": "Certs"
+        },
+        {
+            "href": "#experience",
+            "icon": "bi-briefcase-fill",
+            "text": "Work"
+        },
+        {
+            "href": "#education",
+            "icon": "bi-mortarboard-fill",
+            "text": "Education"
+        }
+    ],
+    "skillsConfig": [
+        { "text": "Databricks Data Intelligence Platform" },
+        { "text": "Unity Catalog" },
+        { "text": "Delta Lake" },
+        { "text": "Lakeflow / Spark Declarative Pipelines" },
+        { "text": "Spark Structured Streaming" },
+        { "text": "Apache Spark / PySpark" },
+        { "text": "MLflow" },
+        { "text": "Model Serving" },
+        { "text": "Vector Search" },
+        { "text": "Generative AI Engineering" },
+        { "text": "Agent Systems / Agent Bricks" },
+        { "text": "Retrieval-Augmented Generation (RAG)" },
+        { "text": "Data Engineering" },
+        { "text": "Data Warehousing / DBSQL" },
+        { "text": "Lakehouse Architecture" },
+        { "text": "Python" },
+        { "text": "SQL" },
+        { "text": "AWS" },
+        { "text": "Azure" },
+        { "text": "GCP" },
+        { "text": "Customer Demos & POCs" },
+        { "text": "Solutions Architecture" }
+    ],
+    "experienceConfig": [
+        {
+            "company": "Databricks",
+            "jobTitle": "Solutions Architect",
+            "date": "Year-Month — Present",
+            "location": "Location placeholder",
+            "imageSrc": "images/Company/databricks.png",
+            "addRole": "No"
+        },
+        {
+            "company": "Previous company placeholder",
+            "jobTitle": "Previous role placeholder",
+            "date": "Start — End",
+            "location": "Location placeholder",
+            "imageSrc": "images/Company/Badge_Fallback.png",
+            "addRole": "No"
+        }
+    ],
+    "badgeConfig": [
+        {
+            "imageUrl": "images/Badges/databricks-ml-engineer-professional.png",
+            "fallbackImageUrl": "images/Badges/Badge_Fallback.png",
+            "altText": "Databricks Certified Machine Learning Engineer Professional",
+            "title": "ML Engineer Professional",
+            "webOnly": false
+        },
+        {
+            "imageUrl": "images/Badges/databricks-data-engineer-professional.png",
+            "fallbackImageUrl": "images/Badges/Badge_Fallback.png",
+            "altText": "Databricks Certified Data Engineer Professional",
+            "title": "Data Engineer Professional",
+            "webOnly": false
+        },
+        {
+            "imageUrl": "images/Badges/databricks-building-retrieval-agents.png",
+            "fallbackImageUrl": "images/Badges/Badge_Fallback.png",
+            "altText": "Academy Accreditation — Building Retrieval Agents on Databricks",
+            "title": "Building Retrieval Agents",
+            "webOnly": false
+        },
+        {
+            "imageUrl": "images/Badges/databricks-genai-engineer-associate.png",
+            "fallbackImageUrl": "images/Badges/Badge_Fallback.png",
+            "altText": "Databricks Certified Generative AI Engineer Associate",
+            "title": "GenAI Engineer Associate",
+            "webOnly": false
+        },
+        {
+            "imageUrl": "images/Badges/databricks-data-engineer-associate.png",
+            "fallbackImageUrl": "images/Badges/Badge_Fallback.png",
+            "altText": "Databricks Certified Data Engineer Associate",
+            "title": "Data Engineer Associate",
+            "webOnly": false
+        },
+        {
+            "imageUrl": "images/Badges/databricks-genai-fundamentals.png",
+            "fallbackImageUrl": "images/Badges/Badge_Fallback.png",
+            "altText": "Academy Accreditation — Generative AI Fundamentals",
+            "title": "GenAI Fundamentals",
+            "webOnly": false
+        },
+        {
+            "imageUrl": "images/Badges/databricks-lakehouse-fundamentals.png",
+            "fallbackImageUrl": "images/Badges/Badge_Fallback.png",
+            "altText": "Academy Accreditation — Databricks Lakehouse Fundamentals",
+            "title": "Lakehouse Fundamentals",
+            "webOnly": false
+        },
+        {
+            "imageUrl": "images/Badges/dais-fe-accreditation-2025.png",
+            "fallbackImageUrl": "images/Badges/Badge_Fallback.png",
+            "altText": "DAIS FE Accreditation 2025",
+            "title": "DAIS FE Accreditation 2025",
+            "webOnly": false
+        },
+        {
+            "imageUrl": "images/Badges/snowpro-core.png",
+            "fallbackImageUrl": "images/Badges/Badge_Fallback.png",
+            "altText": "SnowPro Core Certification",
+            "title": "SnowPro Core",
+            "webOnly": false
+        }
+    ],
+    "notinUse": []
+}
