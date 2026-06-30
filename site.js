@@ -138,75 +138,78 @@ function loadExperience(experienceList) {
         var resumeBox = document.createElement("div");
         resumeBox.className = "resume-box row";
 
-        // Create the first inner div with the class "col-xs-3 col-sm-3 col-md-2"
         var col1 = document.createElement("div");
         col1.className = "col-3 col-sm-3 col-md-2";
-        
-        // Create the image element
+
         var img = document.createElement("img");
         img.className = "company-pic";
         img.src = item.imageSrc;
-        img.alt = "";
-        
+        img.alt = item.company || "";
         col1.appendChild(img);
-        
+
         var col2 = document.createElement("div");
         col2.className = "col-9 col-sm-9 col-md-10 row";
-        
-        // Create the heading element
+
+        // Company name header (with total duration / region subtitle if provided)
         var heading = document.createElement("h4");
         heading.textContent = item.company;
-        
-        // Create the span element for job title
-        var jobTitle = document.createElement("h5");
-        jobTitle.textContent = item.jobTitle;
-        
         col2.appendChild(heading);
-        col2.appendChild(jobTitle);
-        
-        //var col3 = document.createElement("div");
-        //col3.className = "col-9 col-sm-9 col-md-4 pull-right text-right";
-        
-        // Create the date heading element
-        var dateHeading = document.createElement("div");
-        dateHeading.className = "col-7";
-        dateHeading.textContent = item.date;
-        
-        // Create the span element for location
-        var locationSpan = document.createElement("div");
-        locationSpan.className = "col-5";
-        locationSpan.style.textAlign = 'right';
-        locationSpan.textContent = item.location;
-        
-        //var lineBreak = document.createElement("br");
-        col2.appendChild(dateHeading);
-        //col3.appendChild(lineBreak);
-        col2.appendChild(locationSpan);
-        
+
+        if (item.totalDuration || item.companyMeta) {
+            var meta = document.createElement("div");
+            meta.className = "col-12";
+            meta.style.opacity = "0.7";
+            meta.style.fontSize = "0.9em";
+            meta.style.marginBottom = "8px";
+            meta.textContent = [item.totalDuration, item.companyMeta].filter(Boolean).join(" · ");
+            col2.appendChild(meta);
+        }
+
+        // Normalize roles: support new schema (item.roles[]) AND legacy fields
+        var roles = item.roles;
+        if (!roles) {
+            roles = [{
+                jobTitle: item.jobTitle,
+                date: item.date,
+                location: item.location,
+                description: item.description
+            }];
+            if (item.addRole === "Yes" && item.jobTitle2) {
+                roles.push({ jobTitle: item.jobTitle2, date: item.date2, location: item.location2 });
+            }
+        }
+
+        roles.forEach(function (role, idx) {
+            var jobTitle = document.createElement("h5");
+            jobTitle.textContent = role.jobTitle;
+            if (idx > 0) jobTitle.style.paddingTop = "10px";
+            col2.appendChild(jobTitle);
+
+            var dateDiv = document.createElement("div");
+            dateDiv.className = "col-7";
+            dateDiv.style.opacity = "0.85";
+            dateDiv.textContent = role.date || "";
+            col2.appendChild(dateDiv);
+
+            var locDiv = document.createElement("div");
+            locDiv.className = "col-5";
+            locDiv.style.textAlign = "right";
+            locDiv.style.opacity = "0.85";
+            locDiv.textContent = role.location || "";
+            col2.appendChild(locDiv);
+
+            if (role.description) {
+                var desc = document.createElement("div");
+                desc.className = "col-12";
+                desc.style.marginTop = "6px";
+                desc.style.fontSize = "0.95em";
+                desc.textContent = role.description;
+                col2.appendChild(desc);
+            }
+        });
+
         resumeBox.appendChild(col1);
         resumeBox.appendChild(col2);
-        //resumeBox.appendChild(col3);
-        if (item.addRole)
-        {
-             var jobTitle2 = document.createElement("h5");
-            jobTitle2.textContent = item.jobTitle2;
-            jobTitle2.style.paddingTop = '10px';
-            
-            var dateHeading2 = document.createElement("div");
-            dateHeading2.className = "col-7";
-            dateHeading2.textContent = item.date2;
-            
-            // Create the span element for location
-            var locationSpan2 = document.createElement("div");
-            locationSpan2.className = "col-5";
-            locationSpan2.style.textAlign = 'right';
-            locationSpan2.textContent = item.location2;
-            
-            col2.appendChild(jobTitle2);
-            col2.appendChild(dateHeading2);
-            col2.appendChild(locationSpan2);
-        }
-        
         experienceContainer.appendChild(resumeBox);
     });
 }

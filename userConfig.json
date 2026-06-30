@@ -79,19 +79,97 @@
     "experienceConfig": [
         {
             "company": "Databricks",
-            "jobTitle": "Solutions Architect",
-            "date": "Year-Month — Present",
-            "location": "Location placeholder",
+            "totalDuration": "Full-time · 2 yrs",
             "imageSrc": "images/Company/databricks.png",
-            "addRole": "No"
+            "roles": [
+                {
+                    "jobTitle": "Senior Solutions Architect — Strategics",
+                    "date": "Jul 2024 - Present · 2 yrs",
+                    "location": "London Area, United Kingdom",
+                    "description": "Solving the world's toughest data and AI problems with the Databricks Data Intelligence Platform, the market leader in Data and AI."
+                }
+            ]
         },
         {
-            "company": "Previous company placeholder",
-            "jobTitle": "Previous role placeholder",
-            "date": "Start — End",
-            "location": "Location placeholder",
-            "imageSrc": "images/Company/Badge_Fallback.png",
-            "addRole": "No"
+            "company": "Snowflake",
+            "totalDuration": "Full-time · 4 yrs 1 mo",
+            "companyMeta": "Greater London, England, United Kingdom",
+            "imageSrc": "images/Company/snowflake.png",
+            "roles": [
+                {
+                    "jobTitle": "Majors Senior Solutions Engineer",
+                    "date": "Jan 2022 - Jul 2024 · 2 yrs 7 mos",
+                    "location": "London, UK"
+                },
+                {
+                    "jobTitle": "Senior Solutions Engineer",
+                    "date": "Jul 2020 - Jan 2022 · 1 yr 7 mos",
+                    "location": "London, UK"
+                }
+            ]
+        },
+        {
+            "company": "ServiceNow",
+            "totalDuration": "Full-time · 3 yrs 8 mos",
+            "companyMeta": "EMEA",
+            "imageSrc": "images/Company/servicenow.png",
+            "roles": [
+                {
+                    "jobTitle": "Senior Advisory Solutions Consultant (ITOM BU)",
+                    "date": "Dec 2018 - Jul 2020 · 1 yr 8 mos",
+                    "location": "EMEA",
+                    "description": "Played central role in growth of ITOM application suite (later ITX) from £75M turnover (2016) to over £850M (2020) worldwide; laid robust technical and client/market foundation as 2nd overlay."
+                },
+                {
+                    "jobTitle": "Advisory Solutions Consultant (ITOM BU)",
+                    "date": "Dec 2016 - Jan 2019 · 2 yrs 2 mos",
+                    "location": "EMEA"
+                }
+            ]
+        },
+        {
+            "company": "VMware",
+            "totalDuration": "Full-time · 7 yrs",
+            "companyMeta": "EMEA",
+            "imageSrc": "images/Company/vmware.png",
+            "roles": [
+                {
+                    "jobTitle": "Global COE — Lead Architect (WWCC BU)",
+                    "date": "Jun 2015 - Nov 2016 · 1 yr 6 mos",
+                    "location": "EMEA",
+                    "description": "Led Specialist CoE team for VMware's largest global Select accounts, driving and enabling the latest innovations in PaaS and IaaS platforms for the VMware vRealize® and vCloud® suite of applications."
+                },
+                {
+                    "jobTitle": "Manager (SDDC)",
+                    "date": "Feb 2012 - May 2015 · 3 yrs 4 mos",
+                    "location": "EMEA",
+                    "description": "SDDC (Software Defined Datacenter) Regional Practice Manager."
+                },
+                {
+                    "jobTitle": "Senior Consultant Architect (EMEA)",
+                    "date": "Jan 2012 - May 2014 · 2 yrs 5 mos",
+                    "location": "EMEA",
+                    "description": "Providing technical leadership and driving solution-led sales opportunities through execution of VMware's SDDC Hybrid Cloud Automation and Orchestration vision."
+                },
+                {
+                    "jobTitle": "Consultant Architect (EMEA)",
+                    "date": "Dec 2009 - Dec 2011 · 2 yrs 1 mo",
+                    "location": "EMEA"
+                }
+            ]
+        },
+        {
+            "company": "Xtravirt Limited",
+            "totalDuration": "Full-time · 1 yr 3 mos",
+            "imageSrc": "images/Company/xtravirt.png",
+            "roles": [
+                {
+                    "jobTitle": "Technical Director (Co-Founder)",
+                    "date": "Oct 2008 - Dec 2009 · 1 yr 3 mos",
+                    "location": "London Area, United Kingdom",
+                    "description": "Early founding member (1 of 3) at an independent cloud consulting practice driving innovation within the core of Xtravirt's service offerings. Specialised in guiding data strategy and migration transformation."
+                }
+            ]
         }
     ],
     "badgeConfig": [
