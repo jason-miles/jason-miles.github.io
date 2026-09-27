@@ -1,42 +1,33 @@
 # jason-miles.github.io
 
-Personal homepage for Jason Miles, Solutions Architect at Databricks.
+Personal homepage for **Jason Miles** — Senior Solutions Architect at Databricks.
+Live at **https://jason-miles.github.io**.
 
-Live site: **https://jason-miles.github.io**
+A single, self-contained static page in an "engineered editorial" design
+language: Space Grotesk, a near-black / warm-paper canvas that adapts to the
+visitor's light/dark preference, and one Databricks-red accent. No build step
+and no framework — just `index.html` and static assets, served by GitHub Pages
+from `main`.
 
-## Stack
+## Structure
 
-Plain HTML + Bootstrap 5.3.2 + Bootstrap Icons. No build step. All page content
-(skills, work history, certifications, contact links) is driven by
-`userConfig.json` — edit the JSON, push, and the page updates.
+```
+index.html            # the entire page (inline CSS + a little JS)
+favicon.ico, *-16/32  # favicons
+robots.txt, sitemap.xml
+assets/
+  og-card.png         # social share image
+  projects/           # project "spec card" SVGs (theme-adaptive, embedded font)
+  badges/             # certification badge images
+  logos/              # employer logos (experience section)
+```
 
-## Files
+The project spec cards in `assets/projects/` are generated from the profile
+repo ([`jason-miles/jason-miles`](https://github.com/jason-miles/jason-miles),
+`scripts/generate_projects.py`) and share its brand kit, so both surfaces stay
+visually identical. To refresh them, regenerate there and copy the SVGs across.
 
-| File                       | What it does                                          |
-| -------------------------- | ----------------------------------------------------- |
-| `index.html`               | Page skeleton + static About/Education sections       |
-| `userConfig.json`          | All dynamic content (skills, work, badges, navbar)    |
-| `site.js`                  | Loads `userConfig.json` and renders dynamic sections  |
-| `site.css`                 | Site styles (root copy; full source in `css/`)        |
-| `responsive.min.css`       | Mobile breakpoints                                    |
-| `images/Badges/`           | Certification badge PNGs                              |
-| `images/Company/`          | Company / school logos for work experience            |
-| `favicon-*.png`, `*.ico`   | Browser tab icons                                     |
+## Editing
 
-## How to update content
-
-1. Edit `userConfig.json` (skills, experience, badges, etc.)
-2. Drop matching images into `images/Badges/` or `images/Company/`
-3. `git push` — GitHub Pages redeploys in ~30 seconds.
-
-For changes that aren't in the JSON (page title, About paragraphs, footer),
-edit `index.html` directly.
-
-## Credits
-
-Template structure derived from [kuldeep-in/kuldeep-in.github.io](https://github.com/kuldeep-in/kuldeep-in.github.io)
-by Kuldeep Singh. Personalized content and modifications by Jason Miles.
-
-## License
-
-[MIT](LICENSE.txt) for the personalized content. See LICENSE.txt for details.
+Everything is in `index.html` — edit the relevant `<section>` and commit.
+Content adapts to light and dark automatically via `prefers-color-scheme`.
